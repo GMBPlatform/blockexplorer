@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Block Info / GMB BLOCKEXPLORER</title>
+    <link rel="shortcut icon" href="/blockexplorer/static/resources/img/favicon.png" />
+    <link rel="stylesheet" href="/blockexplorer/static/resources/vendor/datatables/datatables.min.css" />
+  </head>
+  <% include ./header.ejs %>
+  <body class="js-loading">
+    <%if(!data.status){ %> <% include ./wrong.ejs %> <%} else{%>
+    <div class="page-content">
+      <div class="dashboard-wrapper">
+        <div class="container-fluid">
+          <div class="page-content__header">
+            <div>
+              <h2 class="page-content__header-heading">Block #<%= data.block_num %></h2>
+            </div>
+          </div>
+          <div class="main-container table-container">
+            <table class="table" style="word-break:break-all">
+              <tbody>
+                <tr>
+                  <td><strong>Block Number</strong></td>
+                  <td><%=data.block_num%></td>
+                </tr>
+
+                <tr>
+                  <td><strong>Generation Time</strong></td>
+                  <td><%=data.block_gen_time%></td>
+                </tr>
+                <tr>
+                  <td><strong>Block Producer</strong></td>
+                  <td><%=data.p2p_addr%></td>
+                </tr>
+                <tr>
+                  <td><strong>Transaction Count</strong></td>
+                  <td><%=data.tx_count%></td>
+                </tr>
+                <tr>
+                  <td><strong>Hash</strong></td>
+                  <td style="font-family:Monospace, 'Consolas'"><%=data.hash%></td>
+                </tr>
+                <tr>
+                  <td><strong>Previous Block Hash</strong></td>
+                  <td>
+                    <a
+                      style="color:#3498db; font-family:Monospace, 'Consolas';"
+                      onmouseover="$(this).css('text-decoration', 'underline');"
+                      onmouseout="$(this).css('text-decoration', 'none');"
+                      href="block?key=<%=data.prev_block_hash%>"
+                      ><%=data.prev_block_hash%></a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+            <div class="page-content__header">
+              <div>
+                <h2 class="page-content__header-heading">Block Info</h2>
+              </div>
+            </div>
+            <div class="main-container table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Tx Hash</th>
+                  <th>Key</th>
+                  <th>Block Number</th>
+                </tr>
+              </thead>
+              <tbody>
+               <% for(let i=0; i<data.transactions.length; i++) {%>
+                  <tr>
+                      <td>
+                          <a
+                          style="color:#3498db; font-family:Monospace, 'Consolas';"
+                          onmouseover="$(this).css('text-decoration', 'underline');"
+                          onmouseout="$(this).css('text-decoration', 'none');"
+                          href="transaction?key=<%= data.transactions[i].hash %>"
+                          ><%= data.transactions[i].hash %></a
+                        >
+                      </td>
+                      <td><%= data.transactions[i].db_key %></td>
+                      <td><%= data.transactions[i].block_num %></td>
+                  </tr>
+               <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%}%>
+    <script src="/blockexplorer/static/resources/vendor/datatables/datatables.min.js"></script>
+  </body>
+</html>

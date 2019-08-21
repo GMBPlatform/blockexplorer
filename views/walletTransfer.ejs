@@ -1,0 +1,110 @@
+<div class="page-content__header">
+  <div>
+    <h2 class="page-content__header-heading">송금</h2>
+  </div>
+</div>
+<div class="main-container">
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">보내는 지갑 주소</div>
+      <input id="wallet_from" type="text" placeholder="To" class="form-control" maxlength="70" />
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6">
+      <div class="wallet-title transfer-information__label">
+        <span>송금 정보</span>
+        <a
+          onclick="appendTransfer()"
+          style="color:#a6a6a6; margin:0px 0px 0px 5px; font-size:15px;"
+          onmouseover="$(this).css('text-decoration', 'underline'); $(this).css('cursor', 'pointer');"
+          onmouseout="$(this).css('text-decoration', 'none');"
+        >
+          추가
+        </a>
+      </div>
+      <div id="transfer_form" class="transfer-form">
+        <div id="transfer_1" class="transfer-form__inner">
+          <div class="row wallet-row-wrapper">
+            <div class="col-lg-12 ">
+              <div style="display:flex; justify-content: space-between;">
+                <div class="transfer-title">받는 지갑 주소</div>
+                <div>
+                  <a
+                    id="remove_1"
+                    onclick="removeTransfer(this.id)"
+                    style="color:#a6a6a6; margin:0px 0px 0px 5px; font-size:15px;"
+                    onmouseover="$(this).css('text-decoration', 'underline'); $(this).css('cursor', 'pointer');"
+                    onmouseout="$(this).css('text-decoration', 'none');"
+                  >
+                    해당 정보 삭제
+                  </a>
+                </div>
+              </div>
+              <input name="wallet_to" type="text" placeholder="From" class="form-control" maxlength="70" />
+            </div>
+          </div>
+          <div class="row wallet-row-wrapper">
+            <div class="col-lg-6 ">
+              <div class="transfer-title">보낼 금액</div>
+              <input
+                name="wallet_amount"
+                type="number"
+                placeholder="Amount"
+                class="form-control"
+                maxlength="20"
+              />
+            </div>
+            <div class="col-lg-6 ">
+              <div class="transfer-title">수수료</div>
+              <input name="wallet_fee" type="number" placeholder="Fee" class="form-control" maxlength="20" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">개인 키</div>
+      <input
+        id="wallet_private_key"
+        type="text"
+        placeholder="Private Key"
+        class="form-control"
+        maxlength="70"
+      />
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-12 ">
+      <div id="wallet_transfer_alert_success" class="alert alert-success collapse" role="alert">
+        <span class="alert-icon ua-icon-info"></span>
+        <span class="close alert__close ua-icon-alert-close" data-dismiss="alert"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-12 ">
+      <div id="wallet_transfer_alert" class="alert alert-danger collapse" role="alert">
+        <span class="alert-icon ua-icon-info"></span>
+        <span class="close alert__close ua-icon-alert-close" data-dismiss="alert"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6">
+      <div style="display:flex">
+        <button
+          onclick="innerSubmitButtonOnClick(this.id)"
+          id="transfer_button"
+          class="btn btn-primary btn-lg mb-2 mr-3"
+          style="width: 150px"
+        >
+          송금
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

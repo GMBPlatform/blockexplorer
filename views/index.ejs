@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Dashboard / GMB BLOCKEXPLORER</title>
+  </head>
+
+  <body class="js-loading">
+    <% include ./header.ejs %> <$=transactionInfo%>
+    <div id="modal-wrapper" class="page-content">
+      <div class="dashboard-wrapper">
+        <div class="container-fluid">
+          <div class="page-content__header">
+            <div>
+              <h2 class="page-content__header-heading">GMB Block Explorer</h2>
+              <!-- <div class="page-content__header-description">Welcome to Our Block Infomation Dashboard</div> -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="widget widget-welcome" style="word-break:break-all; overflow:auto;">
+                <div class="widget-welcome__message">
+                  <h4 style="min-width:120px;" class="widget-welcome__message-l1">Current Quotations</h4>
+                  <h6 class="widget-welcome__message-l2"></h6>
+                </div>
+                <div class="widget-welcome__stats">
+                  <div class="widget-welcome__stats-item early-growth">
+                    <span class="widget-welcome__stats-item-value"><h1 id="Text_LastPrice"></h1></span>
+                    <h2 style="min-width:100px;" class="widget-welcome__stats-item-desc">Price</h2>
+                  </div>
+                  <div class="widget-welcome__stats-item monthly-growth">
+                    <span class="widget-welcome__stats-item-value"><h1 id="Text_Change"></h1></span>
+                    <h2 style="min-width:100px;" class="widget-welcome__stats-item-desc">Change</h2>
+                  </div>
+                  <div class="widget-welcome__stats-item daily-growth">
+                    <span class="widget-welcome__stats-item-value"><h1 id="Text_Volume24H"></h1></span>
+                    <h2 style="min-width:100px;" class="widget-welcome__stats-item-desc">24H Volume</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <form id="search-form" method="GET" onsubmit="return searchOnSubmit()">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button
+                      class="btn btn-outline-secondary dropdown-toggle dropdown-size__custom"
+                      type="button"
+                      id="searchDropDown"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      onclick="searchDropDownMenuOnClick();"
+                    >
+                      Filter
+                    </button>
+                    <div class="dropdown-menu">
+                      <a
+                        class="dropdown-item dropdown-menu__custom"
+                        onclick="searchDropDownItemOnClick('block');"
+                        >Block Hash</a
+                      >
+                      <a
+                        class="dropdown-item dropdown-menu__custom"
+                        onclick="searchDropDownItemOnClick('transaction');"
+                        >Tx Hash</a
+                      >
+                      <a
+                        class="dropdown-item dropdown-menu__custom"
+                        onclick="searchDropDownItemOnClick('wallet');"
+                        >Wallet Addr</a
+                      >
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    id="search-input"
+                    name="key"
+                    class="form-control input-search__element"
+                    placeholder="Search by Block # / Transaction # / Wallet Address"
+                    aria-describedby="basic-addon2"
+                  />
+                  <div class="input-group-append">
+                    <button class="btn btn-lg btn-outline-secondary">
+                      Search
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="search-alert" class="alert alert-danger collapse" role="alert">
+            <span class="alert-icon ua-icon-info"></span>
+            <span class="close alert__close ua-icon-alert-close" data-dismiss="alert"></span>
+          </div>
+          <!--3 line-->
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="ecommerce-widget ecommerce-widget-e">
+                <div class="ecommerce-widget-e__header">Daily Transaction</div>
+                <div class="ecommerce-widget-e__body">
+                  <div
+                    id="daily-transaction__chart"
+                    class="ecommerce-widget-e__chart daily-transaction__wrapper"
+                    _echarts_instance_="ec_1551100330410"
+                    style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative; background: transparent;"
+                  >
+                    <div
+                      style="position: relative; overflow: hidden; width: 795px; height: 240px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"
+                    >
+                      <canvas
+                        width="795"
+                        height="240"
+                        data-zr-dom-id="zr_0"
+                        style="position: absolute; left: 0px; top: 0px; width: 795px; height: 240px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"
+                      ></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="ecommerce-widget-e__footer">
+                  <span class="badge-circle badge-circle-xs badge-circle--danger ecommerce-widget-e__status"
+                    >Amount</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="main-container table-container" style="height:363px; overflow:auto">
+                <div class="widget-controls__header">
+                  <div>Node Information</div>
+                </div>
+                <table
+                  id="node-information__table"
+                  class="table table-striped"
+                  style="word-break:break-all; overflow:auto;"
+                >
+                  <thead>
+                    <tr>
+                      <th>IP</th>
+                      <th>Region</th>
+                      <th>Name</th>
+                      <th>Group</th>
+                      <th>Role</th>
+                    </tr>
+                  </thead>
+                  <tbody style="word-break:break-all;">
+                    <% for(let i=data.length; i > ((data.length - 5) <= 0 ? 0 : data.length) ; i--){ %>
+                    <tr>
+                      <td>
+                        <%= data[i-1].ip %>
+                      </td>
+                      <td>
+                        <%= data[i-1].region %>
+                      </td>
+                      <td>
+                        <%= data[i-1].name %>
+                      </td>
+                      <td>
+                        <%= data[i-1].group %>
+                      </td>
+                      <td>
+                        <%= data[i-1].role %>
+                      </td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-12">
+              <div class="widget widget-alpha widget-alpha--color-amaranth">
+                <div>
+                  <div class="widget-alpha__amount">
+                    <h2 id="total-transaction">Loading...</h2>
+                  </div>
+                  <div class="widget-alpha__description">Total Transaction</div>
+                </div>
+                <span class="widget-alpha__icon ua-icon-suitcase"></span>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12">
+              <div class="widget widget-alpha widget-alpha--color-green-jungle">
+                <div>
+                  <div class="widget-alpha__amount">
+                    <h2 id="total-block">Loading...</h2>
+                  </div>
+                  <div class="widget-alpha__description">Total Block</div>
+                </div>
+                <span class="widget-alpha__icon ua-icon-user-outline"></span>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12">
+              <div class="widget widget-alpha widget-alpha--color-java widget-alpha--help">
+                <div>
+                  <div class="widget-alpha__amount">
+                    <h2 id="total-wallet">Loading...</h2>
+                  </div>
+                  <div class="widget-alpha__description">Wallet Count</div>
+                </div>
+                <span class="widget-alpha__icon ua-icon-ticket"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="ecommerce-widget ecommerce-widget-e">
+                <div class="ecommerce-widget-e__header">Live TPS</div>
+                <div class="ecommerce-widget-e__body">
+                  <div
+                    id="tps__chart"
+                    class="ecommerce-widget-e__chart"
+                    _echarts_instance_="ec_1551100330410"
+                    style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative; background: transparent;"
+                  >
+                    <div
+                      style="position: relative; overflow: hidden; width: 795px; height: 240px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"
+                    >
+                      <canvas
+                        width="795"
+                        height="240"
+                        data-zr-dom-id="zr_0"
+                        style="position: absolute; left: 0px; top: 0px; width: 795px; height: 240px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"
+                      ></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="ecommerce-widget-e__footer">
+                  <span class="badge-circle badge-circle-xs badge-circle--danger ecommerce-widget-e__status"
+                    >Completed</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12">
+              <div style="overflow:auto;" class="main-container table-container">
+                <div class="widget-controls__header">
+                  <div>Latest Blocks</div>
+                </div>
+                <table id="block-information__table" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Block Number</th>
+                      <th>Generate Time</th>
+                      <th>Tx Count</th>
+                      <th>Block Hash</th>
+                    </tr>
+                  </thead>
+                  <tbody style="word-break:break-all"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="main-container table-container">
+                <div class="widget-controls__header">
+                  <div>Transactions</div>
+                </div>
+                <table id="transaction-information__table" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Block Number</th>
+                      <th>Key</th>
+                      <th>Tx Hash</th>
+                    </tr>
+                  </thead>
+                  <tbody style="word-break:break-all"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--client-->
+    <script src="static/customjs/socket.io-client/dist/socket.io.js"></script>
+    <script src="static/customjs/indexClient.js"></script>
+
+    <script>
+      init();
+    </script>
+  </body>
+</html>

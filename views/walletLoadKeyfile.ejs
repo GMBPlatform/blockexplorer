@@ -1,0 +1,63 @@
+<div class="page-content__header">
+  <div>
+    <h2 class="page-content__header-heading">키 파일로 불러오기</h2>
+  </div>
+</div>
+<div class="main-container">
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6">
+      <div class="wallet-title">지갑 생성시 내려받은 키 파일을 업로드하세요.</div>
+      <div class="file-upload__dropzone">
+        <span class="ua-icon-upload file-upload__icon"></span>
+        <!-- <span class="file-upload__message">Drag and drop</span>
+        <span class="file-upload__separator"
+          ><span id="file_upload_span" class="file-upload__separator-text">Or</span></span
+        > -->
+        <div class="file-upload__browse-files">
+          <button class="btn btn-outline-info btn-lg btn-block btn-rounded file-upload__browse-btn">
+            Browse files
+          </button>
+          <input
+            onchange="fileUploadOnChange()"
+            id="upload-files-default"
+            name="files"
+            type="file"
+            accept=".json"
+            data-max-file-size="1M"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">비밀번호를 입력하세요.</div>
+      <input
+        id="wallet_password"
+        type="password"
+        placeholder="Password"
+        class="form-control"
+        maxlength="20"
+      />
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div id="wallet_keyfile_alert" class="alert alert-danger collapse" role="alert">
+        <span class="alert-icon ua-icon-info"></span>
+        <span class="close alert__close ua-icon-alert-close" data-dismiss="alert"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6">
+      <button
+        id="load_keyfile_button"
+        class="btn btn-primary btn-lg mb-2 mr-3"
+        onclick="innerSubmitButtonOnClick(this.id)"
+      >
+        지갑 불러오기
+      </button>
+    </div>
+  </div>
+</div>

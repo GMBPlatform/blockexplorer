@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Block / GMB BLOCKEXPLORER</title>
+    <link rel="shortcut icon" href="static/resources/img/favicon.png" />
+    <link rel="stylesheet" href="static/resources/vendor/datatables/datatables.min.css" />
+    <script src="static/resources/js/ie.assign.fix.min.js"></script>
+  </head>
+  <body class="js-loading">
+    <% include ./header.ejs %>
+
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="page-content__header">
+          <div>
+            <h2 class="page-content__header-heading">Block List</h2>
+          </div>
+        </div>
+        <div class="m-datatable">
+          <table id="datatable" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Block Number</th>
+                <th>Block GenTime</th>
+                <th>Tx Count</th>
+                <th>Block Hash</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="static/resources/vendor/datatables/datatables.min.js"></script>
+    <script src="static/customjs/blockClient.js"></script>
+  </body>
+</html>

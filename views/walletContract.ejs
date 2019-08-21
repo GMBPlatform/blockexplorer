@@ -1,0 +1,57 @@
+<div class="page-content__header">
+  <div>
+    <h2 class="page-content__header-heading">스마트 컨트랙트</h2>
+  </div>
+</div>
+<div class="main-container">
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">보내는 지갑 주소</div>
+      <input id="wallet_from" type="text" placeholder="To" class="form-control" maxlength="70" />
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">받는 지갑 주소</div>
+      <input id="wallet_to" type="text" placeholder="From" class="form-control" maxlength="70" />
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">스마트 컨트랙 내용</div>
+      <textarea id="wallet_contract" rows="5" placeholder="Smart Contract" class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">개인 키</div>
+      <input
+        id="wallet_private_key"
+        type="text"
+        placeholder="Private Key"
+        class="form-control"
+        maxlength="70"
+      />
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-12 ">
+      <div id="wallet_transfer_alert" class="alert alert-danger collapse" role="alert">
+        <span class="alert-icon ua-icon-info"></span>
+        <span class="close alert__close ua-icon-alert-close" data-dismiss="alert"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-12 ">
+      <button
+        onclick="innerSubmitButtonOnClick(this.id)"
+        id="transfer_button"
+        class="btn btn-primary btn-lg mb-2 mr-3"
+        style="width: 150px"
+      >
+        전송
+      </button>
+    </div>
+  </div>
+</div>

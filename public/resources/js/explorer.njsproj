@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3c32eac1-4229-4e6a-ad6e-a952f40e40e9}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <StartupFile>server.js</StartupFile>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include="package.json" />
+    <Content Include="ie.assign.fix.js" />
+    <Content Include="ie.assign.fix.min.js" />
+    <Content Include="main.js" />
+    <Content Include="main.min.js" />
+    <Content Include="form-wizard\form-wizard.js" />
+    <Content Include="preview\booking-dashboard.js" />
+    <Content Include="preview\booking-dashboard.min.js" />
+    <Content Include="preview\colorpicker.js" />
+    <Content Include="preview\colorpicker.min.js" />
+    <Content Include="preview\confirm-alerts.js" />
+    <Content Include="preview\confirm-alerts.min.js" />
+    <Content Include="preview\contact.js" />
+    <Content Include="preview\contact.min.js" />
+    <Content Include="preview\datatables.js" />
+    <Content Include="preview\datatables.min.js" />
+    <Content Include="preview\date-range-picker.js" />
+    <Content Include="preview\date-range-picker.min.js" />
+    <Content Include="preview\datepicker.js" />
+    <Content Include="preview\datepicker.min.js" />
+    <Content Include="preview\default-dashboard.js" />
+    <Content Include="preview\default-dashboard.min.js" />
+    <Content Include="preview\draggable-panels.js" />
+    <Content Include="preview\draggable-panels.min.js" />
+    <Content Include="preview\file-manager.js" />
+    <Content Include="preview\file-manager.min.js" />
+    <Content Include="preview\file-upload.js" />
+    <Content Include="preview\file-upload.min.js" />
+    <Content Include="preview\form-float-labels.js" />
+    <Content Include="preview\form-float-labels.min.js" />
+    <Content Include="preview\form-mask-input.js" />
+    <Content Include="preview\form-mask-input.min.js" />
+    <Content Include="preview\form-validation.js" />
+    <Content Include="preview\form-validation.min.js" />
+    <Content Include="preview\form-wizard-a.js" />
+    <Content Include="preview\form-wizard-a.min.js" />
+    <Content Include="preview\form-wizard-b.js" />
+    <Content Include="preview\form-wizard-b.min.js" />
+    <Content Include="preview\form-wizard-c.js" />
+    <Content Include="preview\form-wizard-c.min.js" />
+    <Content Include="preview\form-wizard-d.js" />
+    <Content Include="preview\form-wizard-d.min.js" />
+    <Content Include="preview\form-wizard-e.js" />
+    <Content Include="preview\form-wizard-e.min.js" />
+    <Content Include="preview\form-wizard.js" />
+    <Content Include="preview\form-wizard.min.js" />
+    <Content Include="preview\frappe-charts.js" />
+    <Content Include="preview\frappe-charts.min.js" />
+    <Content Include="preview\global-settings.js" />
+    <Content Include="preview\global-settings.min.js" />
+    <Content Include="preview\growl-notifications.js" />
+    <Content Include="preview\growl-notifications.min.js" />
+    <Content Include="preview\kanban-board.js" />
+    <Content Include="preview\kanban-board.min.js" />
+    <Content Include="preview\material-colorpicker.js" />
+    <Content Include="preview\material-colorpicker.min.js" />
+    <Content Include="preview\medical-dashboard.js" />
+    <Content Include="preview\medical-dashboard.min.js" />
+    <Content Include="preview\modal.js" />
+    <Content Include="preview\modal.min.js" />
+    <Content Include="preview\multispectral-colorpicker.js" />
+    <Content Include="preview\multispectral-colorpicker.min.js" />
+    <Content Include="preview\page-tour.js" />
+    <Content Include="preview\page-tour.min.js" />
+    <Content Include="preview\palette-colorpicker.js" />
+    <Content Include="preview\palette-colorpicker.min.js" />
+    <Content Include="preview\range-slider.js" />
+    <Content Include="preview\range-slider.min.js" />
+    <Content Include="preview\sales-dashboard.js" />
+    <Content Include="preview\sales-dashboard.min.js" />
+    <Content Include="preview\scheduler.js" />
+    <Content Include="preview\scheduler.min.js" />
+    <Content Include="preview\select.js" />
+    <Content Include="preview\select.min.js" />
+    <Content Include="preview\settings-panel.js" />
+    <Content Include="preview\settings-panel.min.js" />
+    <Content Include="preview\slide-nav.js" />
+    <Content Include="preview\slide-nav.min.js" />
+    <Content Include="preview\social-feed.js" />
+    <Content Include="preview\social-feed.min.js" />
+    <Content Include="preview\spreadsheet.js" />
+    <Content Include="preview\spreadsheet.min.js" />
+    <Content Include="preview\statistic-widgets.js" />
+    <Content Include="preview\statistic-widgets.min.js" />
+    <Content Include="preview\sweet-alert.js" />
+    <Content Include="preview\sweet-alert.min.js" />
+    <Content Include="preview\tab-palette-colorpicker.js" />
+    <Content Include="preview\tab-palette-colorpicker.min.js" />
+    <Content Include="preview\tag-editor.js" />
+    <Content Include="preview\tag-editor.min.js" />
+    <Content Include="preview\tasks.js" />
+    <Content Include="preview\tasks.min.js" />
+    <Content Include="preview\widgets-ecommerce.js" />
+    <Content Include="preview\widgets-ecommerce.min.js" />
+    <Content Include="preview\wysiwyg-alloy-editor.js" />
+    <Content Include="preview\wysiwyg-alloy-editor.min.js" />
+    <Content Include="preview\wysiwyg-jodit-editor.js" />
+    <Content Include="preview\wysiwyg-jodit-editor.min.js" />
+    <Content Include="preview\tui-charts\tui-area-charts.js" />
+    <Content Include="preview\tui-charts\tui-area-charts.min.js" />
+    <Content Include="preview\tui-charts\tui-bar-charts.js" />
+    <Content Include="preview\tui-charts\tui-bar-charts.min.js" />
+    <Content Include="preview\tui-charts\tui-bubble-charts.js" />
+    <Content Include="preview\tui-charts\tui-bubble-charts.min.js" />
+    <Content Include="preview\tui-charts\tui-column-charts.js" />
+    <Content Include="preview\tui-charts\tui-column-charts.min.js" />
+    <Content Include="preview\tui-charts\tui-combo-charts.js" />
+    <Content Include="preview\tui-charts\tui-combo-charts.min.js" />
+    <Content Include="preview\tui-charts\tui-line-charts.js" />
+    <Content Include="preview\tui-charts\tui-line-charts.min.js" />
+    <Content Include="preview\tui-charts\tui-map-charts.js" />
+    <Content Include="preview\tui-charts\tui-map-charts.min.js" />
+    <Content Include="preview\tui-charts\tui-pie-charts.js" />
+    <Content Include="preview\tui-charts\tui-pie-charts.min.js" />
+    <Content Include="preview\tui-charts\tui-radial-charts.js" />
+    <Content Include="preview\tui-charts\tui-radial-charts.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="form-wizard" />
+    <Folder Include="preview" />
+    <Folder Include="preview\tui-charts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="server.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Update.js">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

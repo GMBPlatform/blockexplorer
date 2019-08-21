@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Wallet / GMB BLOCKEXPLORER</title>
+    <link rel="shortcut icon" href="/blockexplorer/static/resources/img/favicon.png" />
+    <link rel="stylesheet" href="/blockexplorer/static/customcss/indexStyle.css" />
+  </head>
+  <body class="js-loading">
+    <% include ./header.ejs %> <% include ./walletSidebar.ejs %>
+    <div class="page-wrap">
+      <div class="page-content wallet-content">
+        <div id="dynamic-form" class="container-fluid">
+          <% include ./walletGenerate.ejs %>
+        </div>
+      </div>
+    </div>
+    <script src="/blockexplorer/static/customjs/ejs.min.js"></script>
+    <script src="/blockexplorer/static/resources/vendor/datatables/datatables.min.js"></script>
+    <script src="/blockexplorer/static/customjs/walletClient.js"></script>
+  </body>
+</html>

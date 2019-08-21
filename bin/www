@@ -1,0 +1,142 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var fs = require("fs");
+var app = require("../app");
+var debug = require("debug")("scheduler:server");
+var https = require("https");
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || "21979");
+app.set("port", port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = https.createServer(
+  {
+    key: fs.readFileSync("/etc/nginx/ssl/gmbssl/www_gmbplatform_io_SHA256WITHRSA.key"),
+    cert: fs.readFileSync("/etc/nginx/ssl/gmbssl/www_gmbplatform_io.crt"),
+    requestCert: false,
+    rejectUnauthorized: false
+  },
+  app
+);
+
+/**
+ * TCP Connect
+ */
+var tcpNetModule = require("../modules/tcpModule");
+global.tcpClient = tcpNetModule;
+
+/**
+ * Socket IO Connect
+ */
+var socketModule = require("../modules/socketModule");
+var io = socketModule.io;
+global.socketSendMessage = socketModule.sendMessage;
+io.attach(server);
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port, "0.0.0.0");
+server.on("error", onError);
+server.on("listening", onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
+
+  var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case "EACCES":
+      console.error(bind + " requires elevated privileges");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+const os = require("os");
+const ifaces = os.networkInterfaces();
+
+const returnMyIp = () => {
+  let myIp = "";
+  Object.keys(ifaces).forEach(ifname => {
+    let alias = 0;
+    ifaces[ifname].forEach(iface => {
+      if ("IPv4" !== iface.family || iface.internal !== false) {
+        return;
+      }
+      if (alias >= 1) {
+        myIp = iface.address;
+      } else {
+        myIp = iface.address;
+      }
+      ++alias;
+    });
+  });
+  return myIp;
+};
+
+const iplocation = require("iplocation").default;
+iplocation(returnMyIp(), ["http://ip-api.com/json/*"], (error, res) => {
+  global.myLocation = res;
+  const getNNClient = tcpNetModule();
+  const toIs = { latitude: res.latitude, longitude: res.longitude };
+  getNNClient.once("data", data => {
+    global.allocatedSca = JSON.parse(data.toString());
+    getNNClient.end();
+  });
+  getNNClient.write(JSON.stringify(toIs));
+});
+
+global.myIp = returnMyIp();
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  debug("Listening on " + bind);
+}

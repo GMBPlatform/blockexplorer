@@ -1,0 +1,75 @@
+<div class="page-content__header">
+  <div>
+    <h2 class="page-content__header-heading">지갑 조회</h2>
+  </div>
+</div>
+<div class="main-container table-container">
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-12">
+      <table class="table table__actions">
+        <thead>
+          <tr>
+            <th>KEY</th>
+            <th>VALUE</th>
+          </tr>
+        </thead>
+        <tbody
+          style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space:
+    -pre-wrap;white-space: -o-pre-wrap;word-break:break-all"
+        >
+          <tr>
+            <td>Random Number</td>
+            <td><%= walletInfo.randomNumber %></td>
+          </tr>
+          <tr>
+            <td>Master Private Key</td>
+            <td><%= walletInfo.privateKey %></td>
+          </tr>
+          <tr>
+            <td>Master Public Key</td>
+            <td><%= walletInfo.publicKey %></td>
+          </tr>
+          <tr>
+            <td>ChainCode</td>
+            <td><%= walletInfo.chainCode %></td>
+          </tr>
+      
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="page-content__header">
+  <div>
+    <h2 class="page-content__header-heading">자식 키 조회</h2>
+  </div>
+</div>
+<div class="main-container table-container">
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-12">
+      <table class="table table__actions">
+        <thead>
+          <tr>
+            <th>Path</th>
+            <th>Address</th>
+            <th>Public Key</th>
+            <th>Private Key</th>
+          </tr>
+        </thead>
+        <tbody
+          style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space:
+          -pre-wrap;white-space: -o-pre-wrap;word-break:break-all; font-size: 12px;"
+        >
+        <% for(let i=0; i<walletInfo.childKeys.length; i++) { %>
+            <tr>
+                <td><%= walletInfo.childKeys[i].path %></td>
+                <td><%= walletInfo.childKeys[i].address %></td>
+                <td><%= walletInfo.childKeys[i].publicKey %></td>
+                <td><%= walletInfo.childKeys[i].privateKey %></td>
+              </tr>
+        <% } %>
+      </tbody>
+      </table>
+    </div>
+  </div>
+</div>

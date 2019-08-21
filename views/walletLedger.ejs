@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Ledger / GMB BLOCKEXPLORER</title>
+    <link
+      rel="shortcut icon"
+      href="/blockexplorer/static/resources/img/favicon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="/blockexplorer/static/resources/vendor/datatables/datatables.min.css"
+    />
+  </head>
+  <% include ./header.ejs %>
+  <body class="js-loading">
+    <%if(!data.status){ %> <% include ./wrong.ejs %> <%} else{%>
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="page-content__header">
+          <div>
+            <h2 class="page-content__header-heading">
+              Ledger-
+              <span style="font-size:18px">
+                <%= data.address %>
+              </span>
+            </h2>
+          </div>
+        </div>
+        <div>
+          <h3>
+            Balance :
+            <span style=" font-weight: 200;" id="wallet_balance"></span> GMB
+          </h3>
+        </div>
+        <div class="m-datatable">
+          <table id="datatable" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Amount</th>
+                <th>Kind</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <%}%>
+    <script src="/blockexplorer/static/resources/vendor/datatables/datatables.min.js"></script>
+    <script>
+      const numberWithCommas = number => {
+        number = number.toString();
+        const pattern = /(-?\d+)(\d{3})/;
+        while (pattern.test(number)) {
+          number = number.replace(pattern, "$1,$2");
+        }
+        return number;
+      };
+      $.ajax({
+        type: "post",
+        data: { address: "<%= data.address %>" },
+        url: `https://www.gmbplatform.io/blockexplorer/wallet/api/balance`,
+        success: result => {
+          $("#wallet_balance").text(numberWithCommas(Number(result.balance)));
+        }
+      });
+      (function($) {
+        "use strict";
+        $(document).ready(function() {
+          var table = $("#datatable").DataTable({
+            ordering: false,
+            lengthChange: false,
+            buttons: ["print", "excel", "pdf", "colvis"],
+            select: true,
+            serverSide: true,
+            paging: true,
+            pageLength: 10,
+            processing: true,
+            searching: false,
+            ajax: {
+              url:
+                "https://www.gmbplatform.io/blockexplorer/provider/init/ledger",
+              type: "POST",
+              xhrFields: { withCredentials: true },
+              crossDomain: true,
+              data: data => {
+                data.delimiter = "ledger";
+                data.address = "<%= data.address %>";
+              }
+            },
+            columns: [
+              { data: "no" },
+              { data: "frompk" },
+              { data: "topk" },
+              { data: "amount" },
+              {
+                data: "kind",
+                render: (data, type, row, meta) => {
+                  if (type === "display") {
+                    if (data === 0) {
+                      data = "GMB";
+                    }
+                  }
+                  return data;
+                }
+              }
+            ],
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]]
+          });
+          table
+            .buttons()
+            .container()
+            .appendTo("#datatable_wrapper .col-md-6:eq(0)");
+        });
+      })(jQuery);
+    </script>
+  </body>
+</html>

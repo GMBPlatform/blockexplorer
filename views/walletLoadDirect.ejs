@@ -1,0 +1,63 @@
+<div class="page-content__header">
+  <div>
+    <h2 class="page-content__header-heading">직접 불러오기</h2>
+  </div>
+</div>
+<div class="main-container">
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">사용자 정의 문장을 입력하세요.</div>
+      <textarea
+        id="wallet_mnemonic"
+        rows="5"
+        placeholder="Mnemonic"
+        class="form-control"
+        maxlength="256"
+      ></textarea>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">비밀번호를 입력하세요.</div>
+      <input
+        id="wallet_password"
+        type="password"
+        placeholder="Password"
+        class="form-control"
+        maxlength="20"
+      />
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">지갑을 생성할 때 발급 받은 임의의 숫자를 입력하세요.</div>
+      <input
+        id="wallet_random"
+        type="password"
+        placeholder="Random number"
+        class="form-control"
+        maxlength="10"
+      />
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div id="wallet_direct_alert" class="alert alert-danger collapse" role="alert">
+        <span class="alert-icon ua-icon-info"></span>
+        <span class="close alert__close ua-icon-alert-close" data-dismiss="alert"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <button
+        onclick="innerSubmitButtonOnClick(this.id)"
+        id="load_direct_button"
+        class="btn btn-primary btn-lg mb-2 mr-3"
+        style="width: 150px"
+      >
+        지갑 불러오기
+      </button>
+    </div>
+  </div>
+</div>

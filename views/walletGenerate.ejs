@@ -1,0 +1,50 @@
+<div class="page-content__header">
+  <div>
+    <h2 class="page-content__header-heading">새로운 지갑 생성</h2>
+  </div>
+</div>
+<div class="main-container">
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">사용자 정의 문장을 입력하세요.</div>
+      <textarea
+        id="wallet_mnemonic"
+        rows="5"
+        placeholder="Mnemonic"
+        class="form-control"
+        maxlength="256"
+      ></textarea>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div class="wallet-title">비밀번호를 입력하세요.</div>
+      <input
+        id="wallet_password"
+        type="password"
+        placeholder="Password"
+        class="form-control"
+        maxlength="20"
+      />
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <div id="wallet_generate_alert" class="alert alert-danger collapse" role="alert">
+        <span class="alert-icon ua-icon-info"></span>
+        <span class="close alert__close ua-icon-alert-close" data-dismiss="alert"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row wallet-row-wrapper">
+    <div class="col-lg-6 ">
+      <button
+        id="wallet_generate_button"
+        class="btn btn-primary btn-lg mb-2 mr-3"
+        onclick="innerSubmitButtonOnClick(this.id)"
+      >
+        지갑 생성하기
+      </button>
+    </div>
+  </div>
+</div>

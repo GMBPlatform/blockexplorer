@@ -1,0 +1,108 @@
+<div class="sidebar-section">
+  <div class="sidebar-section__scroll" data-simplebar="init">
+    <div class="simplebar-track vertical" style="visibility: visible;">
+      <div class="simplebar-scrollbar" style="top: 2px; height: 362px;"></div>
+    </div>
+    <div class="simplebar-track horizontal" style="visibility: hidden;">
+      <div class="simplebar-scrollbar"></div>
+    </div>
+    <div class="simplebar-scroll-content" style="padding-right: 17px; margin-bottom: -34px;">
+      <div
+        class="simplebar-content"
+        style="padding-bottom: 17px; margin-right: -17px; justify-content: flex-start"
+      >
+        <div class="sidebar-user-a">
+          <img src="img/users/user-19.png" alt="" class="sidebar-user-a__avatar rounded-circle" />
+          <div class="sidebar-user-a__name">Martha Howard</div>
+          <div class="sidebar-user-a__desc">Product Manager</div>
+
+          <a href="#" class="btn icon-left sidebar-user-a__link">
+            Personal Account <span class="btn-icon ua-icon-user-solid"></span>
+          </a>
+        </div>
+
+        <div>
+          <div class="sidebar-section__separator">GENERATE</div>
+          <ul class="sidebar-section-nav">
+            <li class="sidebar-section-nav__item">
+              <a
+                id="wallet_generate"
+                class="sidebar-section-nav__link sidebar-element"
+                onclick="sideBarOnClick(this.id)"
+              >
+                <span class="sidebar-section-nav__item-icon ua-icon-home sidebar-element"></span>
+                <span class="sidebar-section-nav__item-text sidebar-element">새 지갑 생성</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="sidebar-section__separator">LOAD</div>
+
+          <ul class="sidebar-section-nav">
+            <li class="sidebar-section-nav__item">
+              <a
+                id="load_keyfile"
+                class="sidebar-section-nav__link sidebar-element"
+                onclick="sideBarOnClick(this.id)"
+              >
+                <span class="sidebar-section-nav__item-icon ua-icon-navbar-open sidebar-element"></span>
+                <span class="sidebar-section-nav__item-text sidebar-element">키 파일로 불러오기</span>
+              </a>
+            </li>
+            <li class="sidebar-section-nav__item">
+              <a
+                id="load_direct"
+                class="sidebar-section-nav__link sidebar-element"
+                onclick="sideBarOnClick(this.id)"
+              >
+                <span class="sidebar-section-nav__item-icon ua-icon-navbar-open sidebar-element"></span>
+                <span class="sidebar-section-nav__item-text sidebar-element">직접 불러오기</span>
+              </a>
+            </li>
+          </ul>
+          <div id="need_wallet_form">
+            <!--style="display: none"-->
+            <div class="sidebar-section__separator">INFORMATION</div>
+
+            <ul class="sidebar-section-nav">
+              <li class="sidebar-section-nav__item">
+                <a
+                  id="wallet_information"
+                  class="sidebar-section-nav__link sidebar-element"
+                  onclick="sideBarOnClick(this.id)"
+                >
+                  <span class="sidebar-section-nav__item-icon ua-icon-navbar-open sidebar-element"></span>
+                  <span class="sidebar-section-nav__item-text sidebar-element">내 지갑 정보 보기</span>
+                </a>
+              </li>
+            </ul>
+            <div class="sidebar-section__separator">TRANSACTION</div>
+
+            <ul class="sidebar-section-nav">
+              <li class="sidebar-section-nav__item">
+                <a
+                  id="transfer"
+                  class="sidebar-section-nav__link sidebar-element"
+                  onclick="sideBarOnClick(this.id)"
+                >
+                  <span class="sidebar-section-nav__item-icon ua-icon-navbar-open sidebar-element"></span>
+                  <span class="sidebar-section-nav__item-text sidebar-element">송금</span>
+                </a>
+              </li>
+              <li class="sidebar-section-nav__item">
+                <a
+                  id="smart_contract"
+                  class="sidebar-section-nav__link sidebar-element"
+                  onclick="sideBarOnClick(this.id)"
+                >
+                  <span class="sidebar-section-nav__item-icon ua-icon-navbar-open sidebar-element"></span>
+                  <span class="sidebar-section-nav__item-text sidebar-element">스마트 컨트랙트</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

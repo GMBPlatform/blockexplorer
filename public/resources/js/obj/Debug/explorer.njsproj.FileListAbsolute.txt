@@ -1,0 +1,6 @@
+C:\KebiHome\myhome\blockexplorer\js\obj\Debug\explorer.njsprojAssemblyReference.cache
+C:\KebiHome\myhome\blockexplorer\js\obj\Debug\explorer.njsproj.CoreCompileInputs.cache
+C:\KebiHome\myhome\blockexplorer\js\bin\Microsoft.NodejsTools.WebRole.dll
+C:\KebiHome\myhome\pakchoi\web\js\obj\Debug\explorer.njsprojAssemblyReference.cache
+C:\KebiHome\myhome\pakchoi\web\js\obj\Debug\explorer.njsproj.CoreCompileInputs.cache
+C:\KebiHome\myhome\pakchoi\web\js\bin\Microsoft.NodejsTools.WebRole.dll
